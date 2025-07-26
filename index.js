@@ -20,3 +20,4 @@ allAnchors.forEach((anchor)=>{
     anchor.addEventListener("click",handelClick)
 })
 
+
