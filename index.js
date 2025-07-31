@@ -1,3 +1,5 @@
+import addProduct from "./addProducts.js"
+import home from "./home.js"
 import login, { handelLoginbind } from "./login.js"
 import register, { handelRegisterBind } from "./register.js"
 
@@ -6,7 +8,7 @@ const allAnchors=document.querySelectorAll('a')
 
 const router={
     "/login":[login,handelLoginbind],
-    "/register":[register,handelRegisterBind],
+    "/register":[register,handelRegisterBind]
 }
 
 function handelClick(e){
