@@ -34,10 +34,17 @@ try {
 
         // console.log(modifiedArray);
 
+            function getCart(){
+      let data=sessionStorage.getItem('cart')
+      let parsedData=JSON.parse(data)||[]
+      return parsedData.length
+      
+    }
+
         root.innerHTML=`<div class="cardContainer">
         <div class="icon-container">
         <i class="fa-solid fa-cart-shopping"></i>
-        <div>${(JSON.parse(sessionStorage.getItem("cart"))||[]).length}</div>
+        <div class='getCartData'>${getCart()}</div>
         </div>
         ${modifiedArray}
         <a href="addProduct" id="add">+</a>
@@ -57,6 +64,9 @@ try {
     }
     anchor.addEventListener('click',handelClickAnchor)
 
+
+
+
     function addToCart(e){
     let encoded = e.target.getAttribute("data-product");
     // console.log(encoded);
@@ -69,6 +79,8 @@ try {
   
 storedData.push(product)
 sessionStorage.setItem('cart',JSON.stringify(storedData))
+ let div=document.querySelector("div[class='getCartData']")
+ div.textContent=`${getCart()}`
       
     }
 
