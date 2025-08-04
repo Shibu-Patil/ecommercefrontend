@@ -8,7 +8,8 @@ const allAnchors=document.querySelectorAll('a')
 
 const router={
     "/login":[login,handelLoginbind],
-    "/register":[register,handelRegisterBind]
+    "/register":[register,handelRegisterBind],
+    "/home":[home]
 }
 
 function handelClick(e){
@@ -40,6 +41,7 @@ root.innerHTML=""
 }
   
 })
+
 
 
 
