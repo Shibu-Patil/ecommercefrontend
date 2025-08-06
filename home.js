@@ -1,4 +1,5 @@
 import addProduct, { handelAddProductBind } from "./addProducts.js"
+import cart from "./cart.js";
 
 let home=()=>{
 
@@ -8,9 +9,9 @@ let home=()=>{
 try {
      let res=await fetch('http://localhost:5000/api/products/all')
     let data=await res.json()
-    console.log(res);
+    // console.log(res);
     if(res.status==200){
-        console.log(data);
+        // console.log(data);
       let modifiedArray=  data.map((produ)=>{
           return `
     <div class="card">
@@ -72,10 +73,10 @@ try {
     // console.log(encoded);
     
   let product = JSON.parse(decodeURIComponent(encoded));
-  console.log(product);
+  // console.log(product);
 
   let storedData=JSON.parse(sessionStorage.getItem('cart'))||[]
-  console.log(storedData);
+  // console.log(storedData);
   
 storedData.push(product)
 sessionStorage.setItem('cart',JSON.stringify(storedData))
@@ -88,6 +89,14 @@ sessionStorage.setItem('cart',JSON.stringify(storedData))
 button.forEach((btn)=>{
   btn.addEventListener('click',addToCart)
 })
+
+
+function handelCartDivClicked(){
+  cart()
+}
+ let div=document.querySelector("div[class='getCartData']")
+
+ div.addEventListener("click",handelCartDivClicked)
 
 });
     }else{

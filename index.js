@@ -11,15 +11,29 @@ const router={
     "/register":[register,handelRegisterBind],
     "/home":[home]
 }
+let path=window.location.pathname
+console.log(path);
+
+if(path=="/index.html"){
+root.innerHTML=login()
+handelLoginbind()
+}
 
 function handelClick(e){
   e.preventDefault()
 //   console.log(e.target.pathname);
 let path=e.target.pathname
-  history.pushState(null,"",`${path}`)
+console.log(path);
+
+if(path=="/index.html"){
+root.innerHTML=login()
+handelLoginbind()
+}else{
+    history.pushState(null,"",`${path}`)
 root.innerHTML=router[path][0]()
 if(router[path][1]){
   router[path][1]()
+}
 }
 }
 allAnchors.forEach((anchor)=>{
@@ -32,7 +46,8 @@ window.addEventListener('popstate',(e)=>{
   // console.log(path);
   
 if(path=="/index.html"){
-root.innerHTML=""
+root.innerHTML=login()
+handelLoginbind()
 }else{
   root.innerHTML=router[path][0]()
  if( router[path][1]){
